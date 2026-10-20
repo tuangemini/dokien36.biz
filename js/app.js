@@ -241,10 +241,33 @@
     modal.classList.add('active');
   };
 
-  // Đóng modal
+  // Đóng modal báo giá
   window.closeQuoteModal = function () {
     const modal = document.getElementById('quoteModal');
     if (modal) modal.classList.remove('active');
+  };
+
+  // Image Lightbox viewer
+  window.openImageLightbox = function (src, caption) {
+    const modal = document.getElementById('imageLightboxModal');
+    const img = document.getElementById('lightboxImg');
+    const cap = document.getElementById('lightboxCaption');
+    if (!modal || !img) return;
+
+    img.src = src;
+    img.alt = caption || 'Hình ảnh Đỗ Kiên 36';
+    if (cap) cap.innerText = caption || '';
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeImageLightbox = function (e) {
+    if (e && e.target && e.target.id === 'lightboxImg') return;
+    const modal = document.getElementById('imageLightboxModal');
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
   };
 
   // Dark mode toggle
@@ -339,6 +362,61 @@
       navToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
       });
+      // Close mobile menu on item click
+      navMenu.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+        });
+      });
     }
+
+    // Scroll to Top Button
+    const scrollTopBtn = document.getElementById('scrollToTopBtn');
+    if (scrollTopBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          scrollTopBtn.classList.add('visible');
+        } else {
+          scrollTopBtn.classList.remove('visible');
+        }
+      }, { passive: true });
+
+      scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Scroll Spy for nav links
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    if (sections.length && navLinks.length) {
+      window.addEventListener('scroll', () => {
+        let current = '';
+        const scrollPosition = window.scrollY + 120;
+        sections.forEach(sec => {
+          const top = sec.offsetTop;
+          const height = sec.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            current = sec.getAttribute('id');
+          }
+        });
+        navLinks.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href === `#${current}`) {
+            link.style.color = 'var(--brand-accent)';
+          } else {
+            link.style.color = '';
+          }
+        });
+      }, { passive: true });
+    }
+
+    // ESC key listener to close modals
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        window.closeQuoteModal();
+        window.closeImageLightbox();
+      }
+    });
   });
 })();

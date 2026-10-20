@@ -107,6 +107,14 @@ QUY TẮC GIAO TIẾP:
         `Mời Quý khách kết nối trực tiếp với Giám đốc Vương qua Hotline/Zalo: **${CONFIG.hotline}** ạ!`;
     }
 
+    if (q.includes('toà nhà') || q.includes('tòa nhà') || q.includes('dokiba') || q.includes('hà nội') || q.includes('bni force')) {
+      return `Dạ về **Toà nhà DOKIBA & Hoạt động kết nối kinh doanh tại Hà Nội** của Giám đốc Đỗ Minh Vương:\n\n` +
+        `🏢 **Toà nhà DOKIBA:** Tòa nhà 6 tầng hiện đại với kiến trúc kính sang trọng, không gian trưng bày sản phẩm bách hóa tổng hợp và đón tiếp đối tác chiến lược toàn quốc.\n` +
+        `🤝 **Kết nối BNI Force Hà Nội:** Giám đốc Đỗ Minh Vương trực tiếp tham gia Ngày hội kết nối kinh doanh và Lễ chuyển giao Ban điều hành BNI Force tại Hà Nội, xây dựng liên minh giao thương vững mạnh giữa hai miền Nam - Bắc.\n` +
+        `🌐 **Mạng lưới đối tác:** Hơn 30+ doanh nghiệp thành viên BNI đồng hành, mở rộng kênh phân phối hàng tiêu dùng chuẩn chỉnh.\n\n` +
+        `Mời Quý đối tác kết nối trực tiếp với Giám đốc Vương qua Hotline/Zalo: **${CONFIG.hotline}** để cùng trao đổi hợp tác ạ!`;
+    }
+
     if (q.includes('đối tác') || q.includes('b2b') || q.includes('bni') || q.includes('kết nối') || q.includes('giặt sấy') || q.includes('khách sạn')) {
       return `Dạ **Đỗ Kiên 36** đang tìm kiếm và mở rộng kết nối với 3 nhóm đối tác chiến lược B2B:\n\n` +
         `1. **Nhà Phân Phối (NPP) & Tổng thầu:** Cần nguồn hàng sinh học chuẩn chỉnh, giá gốc ổn định.\n` +
@@ -243,6 +251,7 @@ QUY TẮC GIAO TIẾP:
 
       <div class="brand-quick-suggestions">
         <button class="suggestion-chip" data-q="Hành trình 13 năm xây dựng uy tín của Giám đốc Đỗ Minh Vương">🌟 Hành trình 13 năm</button>
+        <button class="suggestion-chip" data-q="Toà nhà DOKIBA và kết nối kinh doanh BNI tại Hà Nội">🏢 Toà nhà &amp; BNI Hà Nội</button>
         <button class="suggestion-chip" data-q="Chính sách cho 3 nhóm đối tác B2B (NPP, Tạp hóa, Khách sạn giặt sấy)">🤝 Kết nối B2B</button>
         <button class="suggestion-chip" data-q="Báo giá sỉ bách hóa và hàng tiêu dùng sinh học">📦 Báo giá sỉ</button>
         <button class="suggestion-chip" data-q="Tư vấn đặt Giỏ quà Tết doanh nghiệp theo ngân sách">🎁 Giỏ quà Tết</button>
